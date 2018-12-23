@@ -1,14 +1,5 @@
 # header 
 
-## sub-section
+## questio
 
-```python
-import math
-s = math.sin(10)
-print(s)
-```
-
-
-```math
-\alpha_i(x) = e^{-\beta z}
-```
+[link](http://www.pythonchallenge.com/pc/def/map.html)
