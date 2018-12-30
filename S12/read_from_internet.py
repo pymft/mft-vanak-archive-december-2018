@@ -12,7 +12,7 @@ html_bytes = opened_req.read()
 html_str = html_bytes.decode('utf-8')
 html = str(html_str)
 data = eval(html)
-print(data)
 
-print(data[1])
-print(data[1][0])
+volume = sorted(data, key=lambda a: a[2]-a[1], reverse=True)
+
+print(volume)
