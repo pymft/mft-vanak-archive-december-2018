@@ -1,25 +1,49 @@
-class Square:
-    def __init__(self, width):
-        self.width = width
-
-    def calculate_area(self):
-        return self.width ** 2
-
-    def calculate_perimeter(self):
-        return 4 * self.width
-
-
 class Rectangle:
     def __init__(self, width, height):
         self.width = width
         self.height = height
 
-    def calculate_area(self):
+    @property
+    def area(self):
         return self.width * self.height
 
-    def calculate_perimeter(self):
-        return 2 * (self.width + self.height)
+    @area.setter
+    def area(self, value):
+        ratio = (value / self.area) ** 0.5
+        self.height *= ratio
+        self.width *= ratio
 
-rec = Rectangle(10, 7)
-print(rec.calculate_area())
-print(rec.calculate_perimeter())
+    @property
+    def perimeter(self):
+        return  2 * (self.width + self.height)
+
+    @perimeter.setter
+    def perimeter(self, value):
+        ratio = value / self.perimeter
+        self.height *= ratio
+        self.width *= ratio
+
+    # def __repr__(self):
+    #     out = '+' + '-' * self.width + '+ \n'
+    #     for i in range(self.height-2):
+    #         out += '|' + ' '*(self.width) + '| \n'
+    #     out += '+' + '-' * self.width + '+ \n'
+    #     return out
+
+
+rec = Rectangle(2, 4)
+print(rec.width, rec.height)
+print(rec.area, rec.perimeter)
+
+rec.width = 1
+print(rec.width, rec.height)
+print(rec.area, rec.perimeter)
+
+rec.area = 16
+
+print(rec.width, rec.height)
+print(rec.area, rec.perimeter)
+
+rec.perimeter = 3
+print(rec.width, rec.height)
+print(rec.area, rec.perimeter)
