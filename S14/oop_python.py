@@ -11,17 +11,21 @@ class Vector:
         y = self.y + other.y
         return Vector(x, y)
 
+    def __sub__(self, other):
+        x = self.x - other.x
+        y = self.y - other.y
+        return Vector(x, y)
+
+    # ** __pow__  , *   __mul__  , /  __div__, + __add__, - __sub__
+    # >  __gt__   , >=  __ge__
+    # <  __lt__   , <=  __le__
+    # == __eq__   , !=  __ne__
+
+    
 
 vec1 = Vector(10, 6)  # instantiation, construction
 vec2 = Vector(1, 2)
-print(vec1.x)
-print(vec1.y)
-print(vec1.compute_length())
 
-# adding instances together
 vec3 = vec1 + vec2
-# # from instance point of view
-# vec1.__add__(vec2)
-#
-# # from class point of view
-# Vector.__add__(vec1, vec2)
+# vec1 > vec2
+print(vec3.compute_length())
