@@ -1,33 +1,48 @@
 import urllib.request
 
+
+# singleton
+
+
 class Webpage:
+    _history = []
+    # def __new__(cls):
+
     def __init__(self, url):
+        for s in self._history:
+            if s.url == url:
+                print("you have created similar instance before", url)
+                break
         self.url = url
-
-    def read_content(self):
-        req = urllib.request
-        # TODO: comple me
-        return
-
-    def get_emails(self):
-        # fixme : write proper pattern here to find email addresses
-        pat = ""
-
-        return
+        self.text = ''
+        self._history.append(self)
 
 
-    def get_links(self):
-        """
+    @property
+    def content(self):
+        if self.text == '':
+            req = urllib.request.Request(self.url, headers={'User-Agent': 'Mozilla/5.0'})
+            opened_req = urllib.request.urlopen(req)
+            html_bytes = opened_req.read()
+            self.text = html_bytes.decode('utf-8')
 
-        :return:
-
-        reference:
-        [1] https://stackoverflow.com/questions/15926142/regular-expression-for-finding-href-value-of-a-a-link
-        """
+        return self.text
 
 
 
-site = 'http://www.google.com'
+site = 'http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)'
 w = Webpage(site)
-w.get_emails()
-w.get_links()
+w1 = Webpage(site)
+w2 = Webpage("http://www.google.com")
+w3 = Webpage("http://www.google.com")
+w4 = Webpage("http://www.google.com")
+lst1 = [1, 2, 3]
+print("----")
+w2.content
+print("----")
+w3.content
+print("----")
+w4.content
+print("----")
+# lst2 = [1, 2, 3]
+# lst2 = lst1
