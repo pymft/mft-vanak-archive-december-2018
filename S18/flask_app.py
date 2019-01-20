@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -6,14 +6,20 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "<h1>hello</h1>"
+    return render_template("login.html")
 
 
 @app.route('/login')
 def login():
-    with open("./sample.html", 'r') as f:
-        text = f.read()
-    return text
+    return render_template("sample.html")
+
+@app.route('/test/<int:m>/<int:n>')
+def something(m, n):
+    # text = "<h1> hello </h1>" * num
+
+    return render_template("test.html", m=m, n=n)
+
+
 
 
 
