@@ -5,17 +5,21 @@
     <title>My Website Title</title>
 </head>
 <body>
-<h1>hello world {{ num }}</h1>
+    <h1>hello world {{ num }}</h1>
 
-<table style="background: antiquewhite">
-{% for i in range(m) %}
-    <tr>
-        {% for i in range(n) %}
-             <td>whatever</td>
+    <table style="background: antiquewhite; width: 90%">
+        {% for i in range(m) %}
+            <tr>
+                {% for j in range(n) %}
+                    {% if ((i+1) * (j+1)) % 2 == 0 %}
+                    <td style="color: purple"> {{ (i+1) * (j+1) }} </td>
+                    {% else %}
+                        <td> {{ (i+1) * (j+1) }} </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
         {% endfor %}
-    </tr>
-{% endfor %}
-</table>
+    </table>
 
 </body>
 </html>
